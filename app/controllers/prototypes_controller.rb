@@ -31,6 +31,9 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+    unless user_signed_in? && current_user.id == @prototype.user_id
+      redirect_to action: :index
+    end
   end
 
   def update
